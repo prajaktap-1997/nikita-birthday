@@ -51,7 +51,8 @@ button:active{transform:scale(.95)}.yes{background:linear-gradient(135deg,#ff4f9
 </head>
 <body>
 <div class="noise"></div><div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div>
-<audio id="melody" src="birthday_melody.wav" preload="auto"></audio>
+<audio id="cuteMusic" src="cute_birthday_music.wav" loop preload="auto"></audio>
+<audio id="hbMusic" src="happy_birthday_instrumental.wav" preload="auto"></audio>
 <button class="music" id="musicBtn" onclick="toggleMusic()">🎵 Music: off</button>
 <div class="toast" id="toast"></div>
 
@@ -132,7 +133,6 @@ const qs=[
 "Do you think you're too old for birthday surprises now?",
 "Will you let me annoy you for the rest of our lives? 😂",
 "Do you agree that this birthday website is ridiculously cute? 🎀",
-"In college, would you still choose to become my friend?",
 "After 10 years, are you ready for another 10 years of my nonsense?",
 "Are you ready for your final question? 👀"
 ];
@@ -147,13 +147,17 @@ const noReplies=[
 "Wrong answer. You're never escaping my surprises. 😌",
 "I'm afraid that option expired approximately 10 years ago. 😂",
 "Nice try 😏 We both know that's a lie.",
-"No escape. This one is emotionally mandatory. ❤️",
 "Too late. The next 10 years have already been booked. 😂❤️",
 "There is literally no escape route left. 😂"
 ];
 let i=0,ctx,analyser,source,stream,raf;
 function show(id){document.querySelectorAll(".screen").forEach(x=>x.classList.remove("active"));document.getElementById(id).classList.add("active")}
-function start(){i=0;render()}
+function start(){
+ i=0;
+ cuteMusic.currentTime=0;
+ cuteMusic.play().then(()=>{musicOn=true;musicBtn.textContent="🎵 Music: on"}).catch(()=>{});
+ render();
+}
 function render(){
  document.getElementById("quiz").innerHTML=`<section class="screen active"><div class="card">
  <div class="topline"><span>Birthday challenge</span><span>${i+1} / ${qs.length}</span></div>
@@ -199,8 +203,20 @@ function blow(){
  setTimeout(()=>{show("final");confetti()},900)
 }
 function confetti(){for(let j=0;j<120;j++){let c=document.createElement("i");c.className="conf";c.style.left=Math.random()*100+"vw";c.style.setProperty("--x",(Math.random()*240-120)+"px");c.style.background=["#ff5f9e","#7c2850","#ffd166","#fff","#b8e1ff"][j%5];c.style.animationDelay=Math.random()*1.4+"s";document.body.appendChild(c);setTimeout(()=>c.remove(),5500)}}
-const audio=document.getElementById("melody");
-function toggleMusic(){if(audio.paused){audio.currentTime=0;audio.play();document.getElementById("musicBtn").textContent="🎵 Music: on"}else{audio.pause();document.getElementById("musicBtn").textContent="🎵 Music: off"}}
+const cuteMusic=document.getElementById("cuteMusic");
+const hbMusic=document.getElementById("hbMusic");
+const musicBtn=document.getElementById("musicBtn");
+let musicOn=false;
+function toggleMusic(){
+ if(!musicOn){
+   const finalOpen=document.getElementById("message").classList.contains("active");
+   (finalOpen?hbMusic:cuteMusic).play().catch(()=>{});
+   musicOn=true; musicBtn.textContent="🎵 Music: on";
+ }else{
+   cuteMusic.pause(); hbMusic.pause();
+   musicOn=false; musicBtn.textContent="🎵 Music: off";
+ }
+}else{audio.pause();document.getElementById("musicBtn").textContent="🎵 Music: off"}}
 </script>
 </body>
 </html>
