@@ -154,9 +154,8 @@ let i=0,ctx,analyser,source,stream,raf;
 function show(id){document.querySelectorAll(".screen").forEach(x=>x.classList.remove("active"));document.getElementById(id).classList.add("active")}
 function start(){
  i=0;
- cuteMusic.currentTime=0;
- cuteMusic.play().then(()=>{musicOn=true;musicBtn.textContent="🎵 Music: on"}).catch(()=>{});
  render();
+ playCuteMusic();
 }
 function render(){
  document.getElementById("quiz").innerHTML=`<section class="screen active"><div class="card">
@@ -197,26 +196,69 @@ function detect(){
  loop()
 }
 function blow(){
- if(raf)cancelAnimationFrame(raf);if(stream)stream.getTracks().forEach(t=>t.stop());
- document.getElementById("flame").classList.add("off");document.getElementById("status").textContent="Wish made. Candle blown. ❤️";
- document.getElementById("mic").style.display="none";document.getElementById("fallback").style.display="none";
- setTimeout(()=>{show("final");confetti()},900)
+ if(raf)cancelAnimationFrame(raf);
+ if(stream)stream.getTracks().forEach(t=>t.stop());
+ document.getElementById("flame").classList.add("off");
+ document.getElementById("status").textContent="Wish made. Candle blown. ❤️";
+ document.getElementById("mic").style.display="none";
+ document.getElementById("fallback").style.display="none";
+ playHappyBirthdayMusic();
+ setTimeout(()=>{show("final");confetti()},900);
 }
 function confetti(){for(let j=0;j<120;j++){let c=document.createElement("i");c.className="conf";c.style.left=Math.random()*100+"vw";c.style.setProperty("--x",(Math.random()*240-120)+"px");c.style.background=["#ff5f9e","#7c2850","#ffd166","#fff","#b8e1ff"][j%5];c.style.animationDelay=Math.random()*1.4+"s";document.body.appendChild(c);setTimeout(()=>c.remove(),5500)}}
 const cuteMusic=document.getElementById("cuteMusic");
 const hbMusic=document.getElementById("hbMusic");
 const musicBtn=document.getElementById("musicBtn");
 let musicOn=false;
+
+function playCuteMusic(){
+  if(!cuteMusic) return;
+  cuteMusic.currentTime=0;
+  cuteMusic.play().then(()=>{
+    musicOn=true;
+    musicBtn.textContent="🎵 Music: on";
+  }).catch(()=>{
+    // Mobile browsers may briefly block audio; the user can use the music button.
+    musicOn=false;
+    musicBtn.textContent="🎵 Music: off";
+  });
+}
+
+function playHappyBirthdayMusic(){
+  if(cuteMusic){
+    cuteMusic.pause();
+    cuteMusic.currentTime=0;
+  }
+  if(hbMusic){
+    hbMusic.currentTime=0;
+    hbMusic.play().then(()=>{
+      musicOn=true;
+      musicBtn.textContent="🎵 Music: on";
+    }).catch(()=>{
+      musicOn=false;
+      musicBtn.textContent="🎵 Music: off";
+    });
+  }
+}
+
 function toggleMusic(){
- if(!musicOn){
-   const finalOpen=document.getElementById("message").classList.contains("active");
-   (finalOpen?hbMusic:cuteMusic).play().catch(()=>{});
-   musicOn=true; musicBtn.textContent="🎵 Music: on";
- }else{
-   cuteMusic.pause(); hbMusic.pause();
-   musicOn=false; musicBtn.textContent="🎵 Music: off";
- }
-}else{audio.pause();document.getElementById("musicBtn").textContent="🎵 Music: off"}}
+  if(!musicOn){
+    const finalScreen=document.getElementById("final");
+    const isFinal=finalScreen && finalScreen.classList.contains("active");
+    const track=isFinal ? hbMusic : cuteMusic;
+    if(track){
+      track.play().then(()=>{
+        musicOn=true;
+        musicBtn.textContent="🎵 Music: on";
+      }).catch(()=>{});
+    }
+  }else{
+    if(cuteMusic) cuteMusic.pause();
+    if(hbMusic) hbMusic.pause();
+    musicOn=false;
+    musicBtn.textContent="🎵 Music: off";
+  }
+}
 </script>
 </body>
 </html>
