@@ -51,8 +51,8 @@ button:active{transform:scale(.95)}.yes{background:linear-gradient(135deg,#ff4f9
 </head>
 <body>
 <div class="noise"></div><div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div>
-<audio id="cuteMusic" src="cute_birthday_music.wav" loop preload="auto"></audio>
-<audio id="hbMusic" src="happy_birthday_instrumental.wav" preload="auto"></audio>
+<audio id="cuteMusic" src="this_whistle_can_change_your_mood.mp3" loop preload="auto"></audio>
+<audio id="hbMusic" src="you_wont_believe_how_magical.mp3" preload="auto"></audio>
 <button class="music" id="musicBtn" onclick="toggleMusic()">🎵 Music: off</button>
 <div class="toast" id="toast"></div>
 
@@ -154,8 +154,8 @@ let i=0,ctx,analyser,source,stream,raf;
 function show(id){document.querySelectorAll(".screen").forEach(x=>x.classList.remove("active"));document.getElementById(id).classList.add("active")}
 function start(){
  i=0;
- render();
  playCuteMusic();
+ render();
 }
 function render(){
  document.getElementById("quiz").innerHTML=`<section class="screen active"><div class="card">
