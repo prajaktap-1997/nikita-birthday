@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="theme-color" content="#ff5f9e">
+<title>For Choco 💗</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap');
+:root{--pink:#ff5f9e;--deep:#7c2850;--ink:#54233d;--cream:#fff8fc;--glass:rgba(255,255,255,.78)}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:"DM Sans",sans-serif;color:var(--ink)}
+body{background:#ffd7e7;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:-30%;background:radial-gradient(circle at 25% 20%,#fff 0 8%,transparent 30%),radial-gradient(circle at 80% 30%,#ffb5d3 0 10%,transparent 32%),linear-gradient(135deg,#ffeaf4,#ffc5dc 48%,#f49ac0);z-index:-3;animation:bg 12s ease-in-out infinite alternate}
+@keyframes bg{to{transform:scale(1.08) rotate(2deg)}}
+.noise{position:fixed;inset:0;opacity:.08;pointer-events:none;background-image:radial-gradient(#7c2850 1px,transparent 1px);background-size:17px 17px;z-index:-1}
+.orb{position:fixed;border-radius:50%;filter:blur(1px);opacity:.3;animation:drift 10s ease-in-out infinite alternate;z-index:-2}.o1{width:100px;height:100px;background:#fff;left:8%;top:18%}.o2{width:150px;height:150px;background:#ff77ad;right:2%;bottom:15%;animation-delay:-4s}.o3{width:60px;height:60px;background:#fff;right:20%;top:8%;animation-delay:-7s}
+@keyframes drift{to{transform:translate(30px,-25px) scale(1.15)}}
+.screen{display:none;min-height:100vh;align-items:center;justify-content:center;padding:28px 16px;position:relative}.screen.active{display:flex}
+.card{width:min(600px,100%);padding:28px 20px 24px;background:var(--glass);border:1px solid rgba(255,255,255,.8);backdrop-filter:blur(18px);border-radius:34px;box-shadow:0 30px 90px rgba(91,24,57,.22);position:relative;overflow:hidden}
+.card:after{content:"";position:absolute;width:170px;height:170px;border-radius:50%;background:#fff;opacity:.18;right:-90px;top:-80px}
+.topline{display:flex;justify-content:space-between;align-items:center;color:#a14c74;font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.badge{padding:7px 10px;background:#fff;border-radius:999px;box-shadow:0 6px 16px #a34b6c22}
+h1,h2{font-family:Caveat,cursive;color:var(--deep);line-height:.95;margin:12px 0}h1{font-size:4.1rem}h2{font-size:3rem}
+p{line-height:1.7;margin:12px 0}.hero-sub{font-size:1.02rem}
+.sparkles{font-size:2.2rem;letter-spacing:8px;animation:pop 2s ease-in-out infinite}@keyframes pop{50%{transform:scale(1.08)}}
+button{font:700 1rem "DM Sans";border:0;cursor:pointer;border-radius:999px;padding:14px 22px;transition:.18s;box-shadow:0 10px 24px #6f294722}
+button:active{transform:scale(.95)}.yes{background:linear-gradient(135deg,#ff4f91,#d93477);color:white}.ghost{background:#fff;color:#8c4264}
+.buttons{display:flex;gap:12px;justify-content:center;min-height:54px;position:relative;margin-top:22px}
+.no.run{position:fixed;z-index:100}
+.progress{height:7px;background:#ffffffaa;border-radius:20px;overflow:hidden;margin:18px 0 6px}.bar{height:100%;background:linear-gradient(90deg,#ff5f9e,#a83e73);border-radius:20px;transition:.5s}
+.q{font-size:1.3rem;font-weight:700;line-height:1.45;margin:22px 0}
+.reaction{min-height:30px;text-align:center;color:#a33c68;font-weight:600;margin-top:10px}
+.memory{background:#fff1f7;border-radius:22px;padding:14px;font-family:Caveat;font-size:1.45rem;color:#8d3459}
+.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:18px 0}.tile{background:#fff8fc;border-radius:20px;padding:14px 8px;font-size:1.4rem;box-shadow:inset 0 0 0 1px #fff}.tile span{display:block;font-size:.72rem;margin-top:4px;font-weight:600}
+#candle .card{text-align:center}
+.cakebox{height:220px;display:flex;align-items:center;justify-content:center;position:relative}
+.cake{position:relative;width:190px;height:95px;background:linear-gradient(#8c4b35,#5f3027);border-radius:22px 22px 30px 30px;box-shadow:0 18px 28px #5b2a3033}
+.icing{position:absolute;left:0;right:0;top:0;height:42px;background:#fff3ed;border-radius:50% 50% 45% 45%}.icing:after{content:"";position:absolute;left:25px;right:25px;bottom:-11px;height:20px;background:#fff3ed;border-radius:50%}
+.candle{position:absolute;left:50%;top:-72px;transform:translateX(-50%);width:15px;height:78px;border-radius:7px;background:repeating-linear-gradient(45deg,#fff 0 8px,#ed6699 8px 16px);z-index:4}
+.flame{position:absolute;width:27px;height:39px;left:50%;top:-37px;transform:translateX(-50%);background:radial-gradient(circle at 50% 75%,#fff9a9 0 18%,#ffb21f 35%,#ff5e32 68%,transparent 70%);border-radius:55% 55% 50% 50%;animation:flick .14s infinite alternate}
+@keyframes flick{to{transform:translateX(-50%) scale(1.1) rotate(4deg)}}.off{display:none}
+.blowbar{height:10px;border-radius:20px;background:#fff;margin:14px 0;overflow:hidden}.blowbar i{display:block;width:0;height:100%;background:#ff5f9e;transition:.1s}
+.status{font-weight:700;color:#9d3d67;min-height:28px}.small{font-size:.76rem;color:#96627a}
+.final{max-height:60vh;overflow:auto;text-align:left;padding-right:5px}.final p{margin-bottom:14px}.promise{background:linear-gradient(135deg,#fff0f6,#fff8fb);border-left:4px solid #ff5f9e;border-radius:18px;padding:13px 15px;font-family:Caveat;font-size:1.4rem;color:#7e3154;margin:16px 0}
+.signature{text-align:center;font-family:Caveat;font-size:2rem;color:#7d2d51}
+.conf{position:fixed;top:-20px;width:9px;height:15px;z-index:999;animation:fall 4.5s linear forwards}@keyframes fall{to{transform:translate(var(--x),110vh) rotate(800deg);opacity:0}}
+.toast{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#5c2944;color:#fff;padding:10px 15px;border-radius:999px;font-size:.78rem;opacity:0;transition:.3s;z-index:500}.toast.show{opacity:1}
+.music{position:fixed;right:14px;top:14px;z-index:300;background:#fff8;color:#7d2d51;border:1px solid #fff;backdrop-filter:blur(8px);padding:10px 13px;font-size:.85rem}
+@media(max-width:430px){h1{font-size:3.6rem}h2{font-size:2.65rem}.q{font-size:1.18rem}.card{border-radius:28px;padding:25px 17px}.tiles{gap:7px}.tile{padding:12px 4px}}
+</style>
+</head>
+<body>
+<div class="noise"></div><div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div>
+<audio id="melody" src="birthday_melody.wav" preload="auto"></audio>
+<button class="music" id="musicBtn" onclick="toggleMusic()">🎵 Music: off</button>
+<div class="toast" id="toast"></div>
+
+<section class="screen active" id="intro"><div class="card">
+ <div class="topline"><span>A little mission for</span><span class="badge">Choco 💗</span></div>
+ <h1>Nikita</h1>
+ <div class="sparkles">✦ 💕 ✦ 🎀 ✦</div>
+ <p class="hero-sub">Prajakta has made you a tiny birthday adventure.<br><b>There is only one correct way through it. 😌</b></p>
+ <div class="tiles"><div class="tile">😈<span>Tricky questions</span></div><div class="tile">🎂<span>One candle</span></div><div class="tile">💌<span>A message</span></div></div>
+ <button class="yes" onclick="start()">Let's go 👀 →</button>
+ <p class="small">P.S. The NO button has commitment issues. 😂</p>
+</div></section>
+
+<div id="quiz"></div>
+
+<section class="screen" id="candle"><div class="card">
+ <div class="topline"><span>Final mission</span><span class="badge">1 candle 🕯️</span></div>
+ <h2>Make a wish.</h2>
+ <p>Close your eyes for a second.<br><b>Think of something you really want.</b></p>
+ <div class="cakebox"><div class="cake"><div class="icing"></div><div class="candle"><div class="flame" id="flame"></div></div></div></div>
+ <div class="status" id="status">Then blow into your phone. 💨</div>
+ <div class="blowbar"><i id="level"></i></div>
+ <button class="yes" id="mic" onclick="mic()">🎙️ Start & blow</button>
+ <button class="ghost" id="fallback" onclick="blow()">I'll blow it out manually 💨</button>
+ <p class="small">Microphone access is only used to detect the blow. Nothing is recorded.</p>
+</div></section>
+
+<section class="screen" id="final"><div class="card">
+ <div class="topline"><span>Mission complete</span><span class="badge">🎉</span></div>
+ <h1>Happy Birthday ❤️</h1>
+ <div class="final">
+ <p>Happy Birthday to one of the most special people in my life. ❤️</p>
+ <p>I don't know if I’ve ever properly told you this, but you mean a lot more to me than I probably show.</p>
+ <p>Ten years of friendship is not a small thing. When I look back, there are so many memories, conversations, laughs, silly arguments, misunderstandings, random moments and countless things that only the two of us would understand.</p>
+ <p>And somehow, through all of it, we're still here.</p>
+ <p>We've changed. Life has changed. We've both grown into different versions of ourselves. There have been good days, bad days, days when we couldn't stop talking and days when we probably wanted to kill each other. 😂</p>
+ <p>We've fought. We've argued. We've irritated each other. We've misunderstood each other.</p>
+ <p>But somehow, we always come back to the same place — <b>us.</b></p>
+ <p>And that's what makes this friendship so special to me.</p>
+ <p>I don't expect us to always agree. I don't expect us to never fight. In fact, knowing us, that would probably be impossible. 😂</p>
+ <div class="promise">Promise me that no matter how much we fight, argue, irritate or misunderstand each other, we never let those moments change what we are. ❤️</div>
+ <div class="promise">Promise me that even when life gets busy, things change and we enter different phases of life, we'll still find our way back to each other.</div>
+ <div class="promise">Promise me that years from now, we'll still be able to talk nonsense for hours, laugh at the stupidest things, annoy each other for absolutely no reason and somehow pick up exactly where we left off.</div>
+ <p><b>Promise me we'll remain the same. ❤️</b></p>
+ <p>And now, before this gets way too emotional, let me remind you that you are also getting one year older. 😌😂</p>
+ <p>Don't worry, I won't reveal your age.</p><p>I have enough embarrassing information about you to negotiate a lifetime supply of cake. 🎂😈</p>
+ <p>So today, I hope you laugh a lot.<br>I hope you eat way too much cake.<br>I hope you get spoiled.</p>
+ <p>I hope you receive all the love you deserve.</p>
+ <p>And most importantly, I hope this year brings you closer to everything you've ever wished for.</p>
+ <p>I hope you find happiness in the little things, peace in the difficult moments, and people who make you feel loved, valued and appreciated.</p>
+ <p>You deserve a life that makes you excited to wake up every morning. ❤️</p>
+ <p>Thank you for being you.</p>
+ <p>Thank you for putting up with me for 10 whole years — honestly, that deserves a separate award. 🏆😂</p>
+ <p>Thank you for being one of those rare people with whom I can simply be myself.</p>
+ <p>10 years have passed.</p>
+ <p>And if I had the chance to go back and live it all again, I wouldn't change the fact that you became such an important part of my life.</p>
+ <p>Here's to everything that's still waiting for us.</p>
+ <p>And here's to many more years of laughing, fighting, annoying each other, making memories and somehow remaining the same two idiots we are today. 😂❤️</p>
+ <p>Happy Birthday once again! 🎂✨</p>
+ <p>I hope this birthday gives you at least one moment where you stop, smile and realise just how loved and special you truly are.</p>
+ <p>And if you ever forget it...</p><p><b>I'll remind you. ❤️</b></p>
+ <p>Now enough of my emotional nonsense.</p>
+ <p style="text-align:center;font-family:Caveat;font-size:1.8rem">Because this is your day. 💗</p>
+ <p style="text-align:center;font-family:Caveat;font-size:2.1rem;color:#7d2d51">Happy Birthday, you beautiful human. ❤️</p>
+ </div>
+ <div class="sparkles">🎉 💕 🎂 💕 🎉</div><div class="signature">— Prajakta ❤️</div>
+</div></section>
+
+<script>
+const qs=[
+"Are you ready for your birthday surprise? 👀",
+"Do you know how special you are? ❤️",
+"Are you ready to make some beautiful memories on your special day? ✨",
+"Before we go any further… do you know how special today is to me too? ❤️",
+"Will you admit that you're getting old now? 😂",
+"Will you share your birthday cake with me, or are you suddenly selfish? 👀🍰",
+"Are you ready to pretend you're surprised by every birthday wish? 😂",
+"Do you think you're too old for birthday surprises now?",
+"Will you let me annoy you for the rest of our lives? 😂",
+"Do you agree that this birthday website is ridiculously cute? 🎀",
+"In college, would you still choose to become my friend?",
+"After 10 years, are you ready for another 10 years of my nonsense?",
+"Are you ready for your final question? 👀"
+];
+const noReplies=[
+"Nice try 😏 You already started this, Choco.",
+"Incorrect. We're going to have to fix that. 😌",
+"That wasn't one of the approved answers. 😂",
+"Because today isn't just the day you were born… it's the day the world got someone who would eventually become a very important part of my life. ❤️",
+"Denial has been noted. Your birthday cake disagrees. 😌",
+"Wow. Ten years of friendship and THIS is how it ends? 😂",
+"Too late. Your surprise face has already been scheduled. 😏",
+"Wrong answer. You're never escaping my surprises. 😌",
+"I'm afraid that option expired approximately 10 years ago. 😂",
+"Nice try 😏 We both know that's a lie.",
+"No escape. This one is emotionally mandatory. ❤️",
+"Too late. The next 10 years have already been booked. 😂❤️",
+"There is literally no escape route left. 😂"
+];
+let i=0,ctx,analyser,source,stream,raf;
+function show(id){document.querySelectorAll(".screen").forEach(x=>x.classList.remove("active"));document.getElementById(id).classList.add("active")}
+function start(){i=0;render()}
+function render(){
+ document.getElementById("quiz").innerHTML=`<section class="screen active"><div class="card">
+ <div class="topline"><span>Birthday challenge</span><span>${i+1} / ${qs.length}</span></div>
+ <div class="progress"><div class="bar" style="width:${((i+1)/qs.length)*100}%"></div></div>
+ <div class="q">${qs[i]}</div>
+ <div class="buttons"><button class="yes" onclick="yes()">YES ❤️</button><button class="ghost" id="no" onclick="no()">NO 😈</button></div>
+ <div class="reaction" id="reaction"></div>
+ </div></section>`;
+}
+function yes(){
+ const r=document.getElementById("reaction");
+ if(i===3)r.textContent="Because today isn't just the day you were born… it's the day the world got someone who would eventually become a very important part of my life. ❤️";
+ else if(i===7)r.textContent="Good. I was hoping you'd say that. 😏🎁";
+ else if(i===10)r.textContent="Good. Because I'd choose you all over again too. ❤️";
+ else r.textContent=["I knew it. 😌❤️","Correct answer. Moving on… 👀","See? You can be trusted. 😂"][i%3];
+ setTimeout(()=>{i++;if(i>=qs.length)show("candle");else render()},700)
+}
+function no(){
+ const r=document.getElementById("reaction");r.textContent=noReplies[i];
+ const b=document.getElementById("no");b.classList.add("run");
+ b.style.left=(Math.random()*78+5)+"vw";b.style.top=(Math.random()*72+12)+"vh";
+ setTimeout(()=>b.classList.remove("run"),650);
+}
+async function mic(){
+ try{
+  stream=await navigator.mediaDevices.getUserMedia({audio:true});
+  ctx=new (window.AudioContext||window.webkitAudioContext)();analyser=ctx.createAnalyser();analyser.fftSize=1024;
+  source=ctx.createMediaStreamSource(stream);source.connect(analyser);
+  document.getElementById("mic").textContent="🎙️ Listening… blow!";document.getElementById("status").textContent="Blow toward the microphone! 💨";
+  detect();
+ }catch(e){document.getElementById("status").textContent="Microphone blocked — use the manual button below. ❤️"}
+}
+function detect(){
+ const a=new Uint8Array(analyser.fftSize);
+ function loop(){analyser.getByteTimeDomainData(a);let s=0;for(let x of a){let v=(x-128)/128;s+=v*v}let rms=Math.sqrt(s/a.length);
+ document.getElementById("level").style.width=Math.min(100,rms*520)+"%";if(rms>.13){blow();return}raf=requestAnimationFrame(loop)}
+ loop()
+}
+function blow(){
+ if(raf)cancelAnimationFrame(raf);if(stream)stream.getTracks().forEach(t=>t.stop());
+ document.getElementById("flame").classList.add("off");document.getElementById("status").textContent="Wish made. Candle blown. ❤️";
+ document.getElementById("mic").style.display="none";document.getElementById("fallback").style.display="none";
+ setTimeout(()=>{show("final");confetti()},900)
+}
+function confetti(){for(let j=0;j<120;j++){let c=document.createElement("i");c.className="conf";c.style.left=Math.random()*100+"vw";c.style.setProperty("--x",(Math.random()*240-120)+"px");c.style.background=["#ff5f9e","#7c2850","#ffd166","#fff","#b8e1ff"][j%5];c.style.animationDelay=Math.random()*1.4+"s";document.body.appendChild(c);setTimeout(()=>c.remove(),5500)}}
+const audio=document.getElementById("melody");
+function toggleMusic(){if(audio.paused){audio.currentTime=0;audio.play();document.getElementById("musicBtn").textContent="🎵 Music: on"}else{audio.pause();document.getElementById("musicBtn").textContent="🎵 Music: off"}}
+</script>
+</body>
+</html>
